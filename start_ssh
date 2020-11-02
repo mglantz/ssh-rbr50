@@ -1,0 +1,44 @@
+#!/bin/bash
+# Enable SSH on a Netgear Orbi RBR50
+# sudo@redhat.com, 2020
+
+if [ ! -f /sbin/dropbear ]; then
+        read -p "First time run set this up, you need to run it manually from a terminal." next
+        cd /mnt/bitdefender
+        if [ ! -f /mnt/bitdefender/usr/sbin/dropbear ]; then             
+                echo "Enter password for the root admin user, which you use to access the system."
+                passwd root
+                if [ "$?" -eq 0 ]; then
+                        cp /etc/passwd /mnt/bitdefender/.passwd.old
+                        cp /etc/shadow /mnt/bitdefender/.shadow.old
+                        cp /etc/passwd /mnt/bitdefender/.passwd
+                        cp /etc/shadow /mnt/bitdefender/.shadow
+                fi
+                wget --no-check-certificate https://github.com/whiteskin/openwrt-imagebuilder-ipq806x/raw/master/packages/base/dropbear_2015.67-1_ipq806x.ipk
+                tar xvzf dropbear_2015.67-1_ipq806x.ipk
+                tar xvzf data.tar.gz
+                chmod a+rx /mnt/bitdefender/usr/bin/* /mnt/bitdefender/usr/sbin/*
+        fi
+        if [ ! -f /mnt/bitdefender/.passwd ]; then
+                echo "Error: root password not set. Run:"
+                echo "passwd root"
+                echo "cp /etc/passwd /mnt/bitdefender/.passwd"
+                echo "cp /etc/shadow /mnt/bitdefender/.shadow"
+                exit 1
+        else
+                cp /mnt/bitdefender/.passwd /etc/passwd
+                cp /mnt/bitdefender/.shadow /etc/shadow
+        fi
+        if [ ! -d /etc/dropbear ]; then
+                mkdir /etc/dropbear
+        fi
+        cp -Rp /mnt/bitdefender/usr/bin/* /bin/
+        cp -Rp /mnt/bitdefender/usr/sbin/* /sbin/
+        dropbear -R &
+fi
+
+if pidof dropbear >/dev/null; then
+        echo "dropbear running"
+else
+        dropbear -R &
+fi
