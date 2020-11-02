@@ -20,7 +20,7 @@ if [ ! -f /sbin/dropbear ]; then
                 chmod a+rx /mnt/bitdefender/usr/bin/* /mnt/bitdefender/usr/sbin/*
         fi
         if [ ! -f /mnt/bitdefender/.passwd ]; then
-                echo "Error: root password not set. Run:"
+                echo "Error: root password not set. Run below and try again:"
                 echo "passwd root"
                 echo "cp /etc/passwd /mnt/bitdefender/.passwd"
                 echo "cp /etc/shadow /mnt/bitdefender/.shadow"
@@ -29,6 +29,10 @@ if [ ! -f /sbin/dropbear ]; then
                 cp /mnt/bitdefender/.passwd /etc/passwd
                 cp /mnt/bitdefender/.shadow /etc/shadow
         fi
+        if ! grep start_ssh /mnt/bitdefender/bin/bd >/dev/null; then
+                sed -i -e '\/run $BIN_DIR\/bdheartbeatd -start/a \/mnt\/bitdefender\/start_ssh' /mnt/bitdefender/bin/bd
+        fi
+
         if [ ! -d /etc/dropbear ]; then
                 mkdir /etc/dropbear
         fi
