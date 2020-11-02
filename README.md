@@ -5,6 +5,9 @@ This is a step-by-step guide to enabling SSH on a Netgear Orbi RBR50.
 Please note that doing this may very well void your guarantee. Don't do this if you don't know what your are doing.
 In order to know what you are doing, you need to understart Linux.
 
+## Recovering from something which went wrong
+As of this writing, a factory reset erases all changes.
+
 This script was last tested 2020-11-02.
 
 # Installation
