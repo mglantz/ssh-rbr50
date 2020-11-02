@@ -1,5 +1,13 @@
 #!/bin/bash
-# Enable SSH on a Netgear Orbi RBR50
+# Enable SSH (dropbear) on a Netgear Orbi RBR50
+# 2020-11-02: In general the system does not allow for persistent changes across reboot. There is though a filesystem
+# where you can persist changes: /mnt/bitdefender, that filesystem stores the Orbi's bit defender installation.
+#
+# This script injects itself into the boot process of the bit defender software and utilizes it's filesystem to store
+# software and configuration. 
+#
+# For more information see: https://github.com/mglantz/ssh-rbr50
+# 
 # sudo@redhat.com, 2020
 
 if [ ! -f /sbin/dropbear ]; then
