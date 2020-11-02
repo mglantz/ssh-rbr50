@@ -3,9 +3,9 @@
 # sudo@redhat.com, 2020
 
 if [ ! -f /sbin/dropbear ]; then
-        read -p "First time run set this up, you need to run it manually from a terminal." next
         cd /mnt/bitdefender
         if [ ! -f /mnt/bitdefender/usr/sbin/dropbear ]; then             
+                read -p "First time you run this script, it needs to be done manually from a terminal. Press enter." next
                 echo "Enter password for the root admin user, which you use to access the system."
                 passwd root
                 if [ "$?" -eq 0 ]; then
