@@ -24,6 +24,8 @@ chmod a+rx start_ssh
 ```
 After this has been done once, SSH will start up automatically at reboot of your system. If you do a factory reset, these changes will be erased.
 
+Be patient, it takes a couple of minutes before 1) your system boots 2) the SSH server launches.
+
 # NOTE: Changing your passwords in the future
 Please note, when you have first run the ``start_ssh`` script - the ``admin`` and ``root`` password becomes permanent and will reset at reboot of your device if you change them. 
 
