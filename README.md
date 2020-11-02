@@ -15,7 +15,7 @@ This script was last tested 2020-11-02.
 * Telnet to your system and run below commands:
 ```
 cd /mnt/bitdefender
-wget --no-check-certificate https://raw.githubusercontent.com/mglantz/ansible-rbr50/main/start_ssh 
+wget --no-check-certificate https://raw.githubusercontent.com/mglantz/ssh-rbr50/main/start_ssh 
 chmod a+rx start_ssh
 ./start_ssh
 ```
