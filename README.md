@@ -1,5 +1,5 @@
 # ssh-rbr50
-This is a step-by-step guide to enabling SSH on a Netgear Orbi RBR50.
+This is a step-by-step guide to enabling SSH on a Netgear Orbi RBR50, running firmware: V2.5.2.4.
 
 Please note that this script only enables SSH on your internal network. Exposing SSH to the Internet is a good way to get your network hacked, so refrain of doing so. Use the VPN service if you want SSH access over the Internet.
 
@@ -19,7 +19,7 @@ AFAIKS, bit defender does work as expected, but don't take my word for it.
 ## Recovering from something which went wrong
 As of this writing, a factory reset erases all changes.
 
-This script was last tested 2020-11-02.
+This script was last tested 2020-11-02 on firmware V2.5.2.4.
 
 # Installation
 * Go to http://IP-OF-ORBI/debug.htm and enable ``telnet`` access as shown below.
