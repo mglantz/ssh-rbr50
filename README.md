@@ -33,6 +33,15 @@ After this has been done once, SSH will start up automatically at reboot of your
 
 Be patient, it takes a couple of minutes before 1) your system boots 2) the SSH server launches.
 
+## Persisting the SSH server keyfile
+If you want to persist the keyfile for your SSH server, once you've logged in via SSH, run below command, once:
+
+```
+cp /etc/dropbear/dropbear_rsa_host_key /mnt/bitdefender
+```
+
+The script will now ensure this specific keyfile is used.
+
 # NOTE: Changing your passwords in the future
 Please note, when you have first run the ``start_ssh`` script - the ``admin`` and ``root`` password becomes permanent and will reset at reboot of your device if you change them. 
 
