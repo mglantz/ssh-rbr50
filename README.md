@@ -12,6 +12,9 @@ Good reasons to do this are:
 Please note that doing this may very well void your guarantee. Don't do this if you don't know what your are doing.
 In order to know what you are doing, you need to understart Linux.
 
+We're using a bit defender init script to inject our scripts, this could potentially cause bit defender to not work properly.
+AFAIKS, bit defender does work as expected, but don't take my word for it.
+
 ## Recovering from something which went wrong
 As of this writing, a factory reset erases all changes.
 
