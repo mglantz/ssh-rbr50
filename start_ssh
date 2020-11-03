@@ -12,11 +12,11 @@
 # 
 # sudo@redhat.com, 2020
 
-# Get the IP for the internal br0 interface. First wait until we see it. Loop for 3 minutes.
+# Get the IP for the internal br0 interface. First wait until we see it. Loop for 6 minutes.
 
-loop=180
+loop=360
 while true; do
-        if [ "$loop" == "181" ]; then
+        if [ "$loop" == "361" ]; then
                 echo "Error: no internal IP found."
                 exit 1
         fi
@@ -24,6 +24,7 @@ while true; do
                 sleep 3
                 break
         fi
+        sleep 1
 done
 
 INTERNAL_IP=$(ip a l br0|grep -v inet6|grep inet|cut -d' ' -f6|sed 's/\/.*//')
