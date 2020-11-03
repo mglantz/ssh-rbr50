@@ -1,5 +1,7 @@
 #!/bin/bash
-# Enable SSH (dropbear) on a Netgear Orbi RBR50
+#
+# Enable SSH (dropbear) on a Netgear Orbi RBR50. Listens on your internal interface, not exposed to the internet.
+#
 # 2020-11-02: In general the system does not allow for persistent changes across reboot. There is though a filesystem
 # where you can persist changes: /mnt/bitdefender, that filesystem stores the Orbi's bit defender installation.
 #
@@ -9,6 +11,8 @@
 # For more information see: https://github.com/mglantz/ssh-rbr50
 # 
 # sudo@redhat.com, 2020
+
+INTERNAL_IP=$(ip a l br0|grep -v inet6|grep inet|cut -d' ' -f6|sed 's/\/.*//')
 
 if [ ! -f /sbin/dropbear ]; then
         cd /mnt/bitdefender
@@ -46,11 +50,11 @@ if [ ! -f /sbin/dropbear ]; then
         fi
         cp -Rp /mnt/bitdefender/usr/bin/* /bin/
         cp -Rp /mnt/bitdefender/usr/sbin/* /sbin/
-        dropbear -R &
+        dropbear -R -p $INTERNAL_IP:22 &
 fi
 
 if pidof dropbear >/dev/null; then
         echo "dropbear running"
 else
-        dropbear -R &
+        dropbear -R -p $INTERNAL_IP:22 &
 fi
