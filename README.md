@@ -40,6 +40,28 @@ If you want to persist the keyfile for your SSH server, once you've logged in vi
 cp /etc/dropbear/dropbear_rsa_host_key /mnt/bitdefender
 ```
 
+## General findings
+* Netgear Orbi RBR50 runs OpenWRT
+```
+DISTRIB_ID='OpenWrt'
+DISTRIB_RELEASE='Chaos Calmer'
+DISTRIB_REVISION='r6043'
+DISTRIB_CODENAME='chaos_calmer'
+DISTRIB_TARGET='ipq806x/generic'
+DISTRIB_DESCRIPTION='OpenWrt Chaos Calmer 15.05.1'
+DISTRIB_TAINTS='no-all'
+```
+* / is not emphemeral, changes are not persisted across reoot
+* /mnt/bitdefender is persisted across reboot. Likely also is:
+/mnt/circle
+/mnt/ntgr
+* /mnt/bitdefender is cleaned at factory reset
+* /mnt/bitdefender/bin/bd_procd get's executed fairly quickly after boot, likely during runlevel 3.
+* Interface br0 is the internal network bridge which owns the internal IP
+* Interface brwan is the external network bridge which owns the external IP
+* The admin user cannot be used to login via SSH
+* Root user doesn't have a proper home directory, likely causes issues with ssh keys
+
 The script will now ensure this specific keyfile is used.
 
 # NOTE: Changing your passwords in the future
