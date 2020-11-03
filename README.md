@@ -7,6 +7,7 @@ Good reasons to do this are:
 * You don't want to use (unencrypted) telnet to your system
 * You don't want persistent (across reboot) terminal access to your system
 * You need SSH access to do something
+* You like to live dangerous and want to turn your system into a SSH jump host into your network
 
 # Something may go wrong
 Please note that doing this may very well void your guarantee. Don't do this if you don't know what your are doing.
