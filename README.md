@@ -1,6 +1,13 @@
 # ssh-rbr50
 This is a step-by-step guide to enabling SSH on a Netgear Orbi RBR50.
 
+Please note that this script only enables SSH on your internal network. Exposing SSH to the Internet is a good way to get your network hacked, so refrain of doing so. Use the VPN service if you want SSH access over the Internet.
+
+Good reasons to do this are:
+* You don't want to use (unencrypted) telnet to your system
+* You don't want persistent (across reboot) terminal access to your system
+* You need SSH access to do something
+
 # Something may go wrong
 Please note that doing this may very well void your guarantee. Don't do this if you don't know what your are doing.
 In order to know what you are doing, you need to understart Linux.
