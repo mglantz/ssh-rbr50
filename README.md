@@ -43,6 +43,8 @@ If you want to persist the keyfile for your SSH server, once you've logged in vi
 cp /etc/dropbear/dropbear_rsa_host_key /mnt/bitdefender
 ```
 
+The script will now ensure this specific keyfile is used.
+
 ## General findings
 * Netgear Orbi RBR50 runs OpenWRT
 ```
@@ -64,8 +66,6 @@ DISTRIB_TAINTS='no-all'
 * Interface brwan is the external network bridge which owns the external IP
 * The admin user cannot be used to login via SSH
 * Root user doesn't have a proper home directory, likely causes issues with ssh keys
-
-The script will now ensure this specific keyfile is used.
 
 # NOTE: Changing your passwords in the future
 Please note, when you have first run the ``start_ssh`` script - the ``admin`` and ``root`` password becomes permanent and will reset at reboot of your device if you change them. 
