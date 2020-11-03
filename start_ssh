@@ -16,15 +16,15 @@
 
 loop=360
 while true; do
-        if [ "$loop" == "361" ]; then
+        if [ "$loop" == "181" ]; then
                 echo "Error: no internal IP found."
                 exit 1
         fi
+        sleep 1
         if ifconfig br0|grep "inet addr:" >/dev/null; then
                 sleep 3
                 break
         fi
-        sleep 1
 done
 
 INTERNAL_IP=$(ip a l br0|grep -v inet6|grep inet|cut -d' ' -f6|sed 's/\/.*//')
@@ -65,8 +65,8 @@ if [ ! -f /sbin/dropbear ]; then
         fi
         
         # If we have not injected the start script into the bit defender start script, do so.
-        if ! grep start_ssh /mnt/bitdefender/bin/bd >/dev/null; then
-                sed -i -e '\/run $BIN_DIR\/bdheartbeatd -start/a \/mnt\/bitdefender\/start_ssh' /mnt/bitdefender/bin/bd
+        if ! grep start_ssh /mnt/bitdefender/bin/bd_procd >/dev/null; then
+                sed -i -e '/start_services() {/a sh \/mnt\/bitdefender\/start_ssh'a /mnt/bitdefender/bin/bd_procd
         fi
 
         # At boot, there is no dropbear config directory (where keys are stored), so create it
