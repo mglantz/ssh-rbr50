@@ -57,7 +57,7 @@ DISTRIB_TARGET='ipq806x/generic'
 DISTRIB_DESCRIPTION='OpenWrt Chaos Calmer 15.05.1'
 DISTRIB_TAINTS='no-all'
 ```
-* / is not emphemeral, changes are not persisted across reoot
+* / is emphemeral, changes are not persisted across reoot
 * /mnt/bitdefender is persisted across reboot. Likely also is:
 /mnt/circle
 /mnt/ntgr
